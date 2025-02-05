@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgoy4opnt0lp3"]
+
+[ext_resource type="Script" path="res://scenes/main_character.gd" id="1_gv1pi"]
+[ext_resource type="Texture2D" uid="uid://cs1q1f7j3xr83" path="res://Archer_Blue_solo.png" id="1_mm0jy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xrdw"]
+size = Vector2(38, 54)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_gv1pi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mm0jy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 5)
+shape = SubResource("RectangleShape2D_8xrdw")

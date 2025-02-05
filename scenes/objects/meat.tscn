@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://db8xao1pnog1m"]
+
+[ext_resource type="Script" path="res://scenes/objects/meat.gd" id="1_bkwpj"]
+[ext_resource type="Texture2D" uid="uid://vvaxeakkeyul" path="res://images/objects/M_Spawn.png" id="1_cga1e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jxf4"]
+atlas = ExtResource("1_cga1e")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ricj2"]
+atlas = ExtResource("1_cga1e")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3l2vl"]
+atlas = ExtResource("1_cga1e")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uujp7"]
+atlas = ExtResource("1_cga1e")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdye6"]
+atlas = ExtResource("1_cga1e")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1ww3"]
+atlas = ExtResource("1_cga1e")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbuys"]
+atlas = ExtResource("1_cga1e")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j2fqj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jxf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ricj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l2vl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uujp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdye6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1ww3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbuys")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u276"]
+size = Vector2(50.5586, 39.2305)
+
+[node name="Meat" type="Area2D"]
+texture_filter = 1
+position = Vector2(95, -63)
+scale = Vector2(1.02066, 0.934839)
+script = ExtResource("1_bkwpj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-94.0564, 66.3216)
+sprite_frames = SubResource("SpriteFrames_j2fqj")
+frame = 6
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-90.9228, 79.8671)
+shape = SubResource("RectangleShape2D_8u276")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
