@@ -26,7 +26,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		print("lose health")
 		body.get_pushed_back(x_delta, y_delta)
 		game_manager.decrease_health()
-	elif body.name == "Arrow":  # Check for collision with arrow
+	elif body.name == "Arrow":  
 		hit_count += 1
 		print("hit count: " + str(hit_count))
 		if hit_count >= MAX_HITS:

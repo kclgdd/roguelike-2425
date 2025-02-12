@@ -31,6 +31,7 @@ func update_hearts_display():
 			hearts[h].show()
 		else:
 			hearts[h].hide()
+		
 			
 func increase_collectable():
 	collectable += 1
