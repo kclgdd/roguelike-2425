@@ -29,7 +29,8 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction_x := Input.get_axis("left", "right")
 	var direction_y := Input.get_axis("up", "down")
-	
+	#print("x: " + str(direction_x) + " y: " + str(direction_y))
+
 	# Create a direction vector
 	var direction := Vector2(direction_x, direction_y)
 
@@ -55,10 +56,10 @@ func shoot_arrow() -> void:
 	
 	# Set the direction and velocity of the arrow
 	if sprite_2d.flip_h:
-		arrow_instance.linear_velocity  = Vector2(-2000, 0)  # Adjust the velocity value as needed
+		arrow_instance.linear_velocity  = Vector2(-2000, 0)  
 		arrow_instance.get_node("Sprite2D").flip_h = true
 	else:
-		arrow_instance.linear_velocity  = Vector2(2000, 0)  # Adjust the velocity value as needed
+		arrow_instance.linear_velocity  = Vector2(2000, 0)  
 		arrow_instance.get_node("Sprite2D").flip_h = false
 
 	get_parent().add_child(arrow_instance)

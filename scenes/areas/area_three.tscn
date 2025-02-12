@@ -651,7 +651,7 @@ texture = ExtResource("3_2hxga")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_x3a47")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jl88a"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x44dp"]
 texture = ExtResource("9_d1v5i")
 3:3/animation_columns = 8
 3:3/animation_separation = Vector2i(11, 0)
@@ -1087,7 +1087,7 @@ texture = ExtResource("9_d1v5i")
 8:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_ry614"]
-sources/0 = SubResource("TileSetAtlasSource_jl88a")
+sources/0 = SubResource("TileSetAtlasSource_x44dp")
 
 [node name="Node" type="Node"]
 
