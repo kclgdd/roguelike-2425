@@ -2129,7 +2129,7 @@ position_smoothing_enabled = true
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("8_acqbr")]
-position = Vector2(796, 157)
+position = Vector2(300, 133)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
