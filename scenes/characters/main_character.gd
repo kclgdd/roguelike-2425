@@ -8,12 +8,12 @@ const JUMP_VELOCITY = -400.0
 
 @onready var sfx_arrows: AudioStreamPlayer = $"../sfx_arrows"
 
-func get_pushed_back(x,y):
-	var push_distance = 80
-	if (x > 40): position.x += push_distance
-	if (x < -35): position.x -= push_distance
-	if (y > 50): position.y -= push_distance
-	if (y < -50): position.y += push_distance
+var push_velocity: Vector2 = Vector2.ZERO
+var push_decay: float = 0.9
+
+func get_pushed_back(x, y):
+	push_velocity = Vector2(x, y).normalized() * 1000  # Apply push
+	
 	
 func _physics_process(delta: float) -> void:
 	# Animations	
@@ -29,20 +29,18 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction_x := Input.get_axis("left", "right")
 	var direction_y := Input.get_axis("up", "down")
+	var direction := Vector2(direction_x, direction_y).normalized()
 	#print("x: " + str(direction_x) + " y: " + str(direction_y))
 
-	# Create a direction vector
-	var direction := Vector2(direction_x, direction_y)
-
-	# Normalize the direction vector to ensure consistent speed
-	if direction.length() > 0:
-		direction = direction.normalized()
-
-	# Set the velocity based on the normalized direction
-	velocity = direction * SPEED
-		
+	# if not being pushec
+	if push_velocity.length() > 10:
+		velocity = push_velocity
+		push_velocity = lerp(push_velocity, Vector2.ZERO, 1 - pow(push_decay, delta * 60))  # Smooth decay
+	else:
+		push_velocity = Vector2.ZERO
+		velocity = direction * SPEED  # Apply normal movement
 	move_and_slide()
-	
+		
 	if direction_x < 0:
 		sprite_2d.flip_h = true  # Face left
 	elif direction_x > 0:
