@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://c365ac57nrosg"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_4k2m8"]
+[ext_resource type="Texture2D" uid="uid://bjmb8n2hggrlp" path="res://images/UI/Carved_9Slides.png" id="2_e1s01"]
+[ext_resource type="Texture2D" uid="uid://c8ghkmenjb8bq" path="res://images/tiles/Brown.png" id="2_pt4oj"]
+[ext_resource type="Texture2D" uid="uid://cxa5bny0dhkqg" path="res://images/UI/logo.png" id="3_bmm68"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_4k2m8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -79.0
+offset_top = -69.0
+offset_right = 88.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_e1s01")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 1171.0
+offset_bottom = 648.0
+texture = ExtResource("2_pt4oj")
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -142.0
+offset_right = 263.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bmm68")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = 20.0
+offset_right = 133.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Start
+"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
