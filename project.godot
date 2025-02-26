@@ -20,6 +20,10 @@ config/icon="res://images/UI/icon.svg"
 AudioManager="*res://scenes/audio_manager.gd"
 GameManager="*res://scenes/game_manager.gd"
 
+[dotnet]
+
+project/assembly_name="roguelike"
+
 [input]
 
 left={
