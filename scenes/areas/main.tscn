@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dsrxjilbjiw37" path="res://scenes/objects/arrow.tscn" id="7_4lkuw"]
 [ext_resource type="PackedScene" uid="uid://b01kpiacb7263" path="res://scenes/characters/enemy.tscn" id="8_acqbr"]
 [ext_resource type="Texture2D" uid="uid://o3y2ore7ahhs" path="res://images/objects/love-always-wins.png" id="9_dblwe"]
-[ext_resource type="PackedScene" uid="uid://0in1e05ufj6" path="res://scenes/objects/collectable.tscn" id="10_ei2x0"]
+[ext_resource type="PackedScene" path="res://scenes/objects/collectable.tscn" id="10_ei2x0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3x82m"]
 texture = ExtResource("3_eunt4")

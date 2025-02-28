@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://bgoy4opnt0lp3"]
+[gd_scene load_steps=28 format=3 uid="uid://bgoy4opnt0lp3"]
 
 [ext_resource type="Script" path="res://scenes/characters/main_character.gd" id="1_gv1pi"]
 [ext_resource type="Texture2D" uid="uid://dosbfhxkg2q6u" path="res://images/characters/Archer_Blue.png" id="2_r0j0u"]
+[ext_resource type="PackedScene" uid="uid://bvsnbk36sodsr" path="res://scenes/misc/hurtbox.tscn" id="3_m4ojt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ek10c"]
 atlas = ExtResource("2_r0j0u")
@@ -171,6 +172,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xrdw"]
 size = Vector2(38, 54)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kirqi"]
+radius = 10.5555
+height = 54.0
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_gv1pi")
 
@@ -182,3 +187,17 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 5)
 shape = SubResource("RectangleShape2D_8xrdw")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_m4ojt")]
+collision_layer = 2
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(-1, 5)
+scale = Vector2(1.8, 1)
+shape = SubResource("CapsuleShape2D_kirqi")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+
+[editable path="Hurtbox"]

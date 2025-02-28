@@ -3,6 +3,9 @@ extends RigidBody2D
 @onready var game_manager: Node = $"../../GameManager"
 @onready var main_character: CharacterBody2D = $"../../CharacterBody2D"
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var rigid_body_2d: RigidBody2D = $"."
+@onready var hitbox: Area2D = $Hitbox
+
 
 var hit_count: int = 0  # Counter to track the number of hits
 const MAX_HITS = 10  # Number of hits required to remove the enemy
@@ -44,11 +47,14 @@ func move_toward_main_character(delta: float) -> void:
 		# Flip the enemy's sprite based on the direction it's moving
 		if direction.x < 0:
 			animated_sprite_2d.flip_h = true  # Face left
+
 			attack_animation(distance)
 		elif direction.x > 0:
 			animated_sprite_2d.flip_h = false  # Face right
 			attack_animation(distance)
 		
+		flip_hitbox()
+
 
 func attack_animation(distance):
 	if distance < 140:
@@ -56,9 +62,34 @@ func attack_animation(distance):
 	else:
 		animated_sprite_2d.animation = "moving"
 		
+		
 func blood_animation():
 	var BloodEffect  = preload("res://scenes/objects/blood_animation.tscn")
 	var blood_effect = BloodEffect.instantiate()
 	get_parent().add_child(blood_effect)
 	blood_effect.position = position
 	
+## Checks if hitbox should be enabled
+func should_trigger_hitbox():
+	if animated_sprite_2d:
+		var total_frames = animated_sprite_2d.sprite_frames.get_frame_count("attacking") 
+		var current_frame = animated_sprite_2d.frame  
+		
+		# Enable hitbox in last frames of attacking animation
+		if (animated_sprite_2d.get_animation()=="attacking"
+		 and current_frame >= total_frames - 2):
+			hitbox.enable()
+		else:
+			hitbox.disable()
+	
+## Flips hitbox to make sure it matches flipped sprite
+func flip_hitbox():
+	if animated_sprite_2d.flip_h:
+		if hitbox.position.x >= 0:
+			hitbox.position.x *= -1
+	else:
+		if hitbox.position.x <= 0:
+			hitbox.position *= -1
+	
+func _on_animated_sprite_2d_frame_changed() -> void:
+	self.should_trigger_hitbox()
