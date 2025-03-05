@@ -7,7 +7,7 @@ var collectable = 0
 signal health_changed
 signal collectible_changed
 
-func _ready() -> void:	
+func _ready() -> void:
 	pass	
 	
 	
