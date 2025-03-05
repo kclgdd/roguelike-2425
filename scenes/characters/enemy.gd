@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@onready var game_manager: Node = $"../../GameManager"
+@onready var game_manager: Node = GameManager
 @onready var main_character: CharacterBody2D = $"../../CharacterBody2D"
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var rigid_body_2d: RigidBody2D = $"."
@@ -26,7 +26,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var x_delta = body.position.x - position.x
 		var y_delta = position.y - body.position.y
 		print(str(x_delta) + " " + str(y_delta))
-		print("lose health")
 		body.get_pushed_back(x_delta, y_delta)
 		game_manager.decrease_health()
 	elif body.name == "Arrow":  

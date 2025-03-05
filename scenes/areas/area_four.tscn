@@ -1,13 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://ddcq1mxdf6ra1"]
+[gd_scene load_steps=9 format=4 uid="uid://ddcq1mxdf6ra1"]
 
-[ext_resource type="Script" path="res://scenes/game_manager.gd" id="1_ikbmt"]
 [ext_resource type="Texture2D" uid="uid://c8ghkmenjb8bq" path="res://images/tiles/Brown.png" id="2_wdv41"]
 [ext_resource type="Texture2D" uid="uid://ckmlcej4xqq0h" path="res://images/tiles/Tilemap_Flat.png" id="3_rgfq2"]
 [ext_resource type="PackedScene" uid="uid://bgoy4opnt0lp3" path="res://scenes/characters/main_character.tscn" id="5_i03qj"]
 [ext_resource type="PackedScene" uid="uid://cil3uijfug6qc" path="res://scenes/characters/boss.tscn" id="6_hub15"]
 [ext_resource type="PackedScene" uid="uid://dsrxjilbjiw37" path="res://scenes/objects/arrow.tscn" id="6_mvtik"]
 [ext_resource type="Script" path="res://scenes/characters/boss.gd" id="7_ebor3"]
-[ext_resource type="Texture2D" uid="uid://o3y2ore7ahhs" path="res://images/objects/love-always-wins.png" id="8_uanah"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x3a47"]
 texture = ExtResource("3_rgfq2")
@@ -651,10 +649,6 @@ sources/0 = SubResource("TileSetAtlasSource_x3a47")
 
 [node name="Node" type="Node"]
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("hearts")]
-script = ExtResource("1_ikbmt")
-hearts = [NodePath("../UI/Panel/HBoxContainer/Heart"), NodePath("../UI/Panel/HBoxContainer/Heart2"), NodePath("../UI/Panel/HBoxContainer/Heart3")]
-
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
 anchors_preset = 15
@@ -679,42 +673,3 @@ arrow_scene = ExtResource("6_mvtik")
 [node name="RigidBody2D" parent="Enemies" instance=ExtResource("6_hub15")]
 position = Vector2(865, 346)
 script = ExtResource("7_ebor3")
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Panel" type="Panel" parent="UI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -287.0
-offset_top = 28.0
-offset_right = -34.0
-offset_bottom = 100.0
-grow_horizontal = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Heart" type="TextureRect" parent="UI/Panel/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("8_uanah")
-expand_mode = 2
-
-[node name="Heart2" type="TextureRect" parent="UI/Panel/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("8_uanah")
-expand_mode = 2
-
-[node name="Heart3" type="TextureRect" parent="UI/Panel/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("8_uanah")
-expand_mode = 2

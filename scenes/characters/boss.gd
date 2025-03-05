@@ -1,6 +1,5 @@
 extends RigidBody2D
 
-@onready var game_manager: Node = $"../../GameManager"
 @onready var main_character: CharacterBody2D = $"../../CharacterBody2D"
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -25,7 +24,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		print(str(x_delta) + " " + str(y_delta))
 		print("lose health")
 		body.get_pushed_back(x_delta, y_delta)
-		game_manager.decrease_health()
+		GameManager.decrease_health()
 	elif body.name == "Arrow":  # Check for collision with arrow
 		hit_count += 1
 		print("hit count: " + str(hit_count))

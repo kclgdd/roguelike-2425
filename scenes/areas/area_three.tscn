@@ -1,13 +1,11 @@
-[gd_scene load_steps=15 format=4 uid="uid://d34wmm0asn0l2"]
+[gd_scene load_steps=13 format=4 uid="uid://d34wmm0asn0l2"]
 
-[ext_resource type="Script" path="res://scenes/game_manager.gd" id="1_ropxc"]
 [ext_resource type="Texture2D" uid="uid://c8ghkmenjb8bq" path="res://images/tiles/Brown.png" id="2_52q6t"]
 [ext_resource type="Texture2D" uid="uid://ckmlcej4xqq0h" path="res://images/tiles/Tilemap_Flat.png" id="3_2hxga"]
 [ext_resource type="PackedScene" uid="uid://bglfbs7mqerkx" path="res://scenes/objects/exit_h.tscn" id="4_vyqmd"]
 [ext_resource type="PackedScene" uid="uid://ddcq1mxdf6ra1" path="res://scenes/areas/area_four.tscn" id="5_0y5h1"]
 [ext_resource type="PackedScene" uid="uid://bgoy4opnt0lp3" path="res://scenes/characters/main_character.tscn" id="5_68ktb"]
 [ext_resource type="PackedScene" uid="uid://dsrxjilbjiw37" path="res://scenes/objects/arrow.tscn" id="6_w6asj"]
-[ext_resource type="Texture2D" uid="uid://o3y2ore7ahhs" path="res://images/objects/love-always-wins.png" id="8_lkjdl"]
 [ext_resource type="Texture2D" uid="uid://wb4bui4lfuuj" path="res://images/tiles/Foam.png" id="9_d1v5i"]
 [ext_resource type="PackedScene" uid="uid://db8xao1pnog1m" path="res://scenes/objects/meat.tscn" id="10_ff44d"]
 
@@ -1091,11 +1089,6 @@ sources/0 = SubResource("TileSetAtlasSource_x44dp")
 
 [node name="Node" type="Node"]
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("hearts")]
-unique_name_in_owner = true
-script = ExtResource("1_ropxc")
-hearts = [NodePath("../UI/Panel/HBoxContainer/Heart"), NodePath("../UI/Panel/HBoxContainer/Heart2"), NodePath("../UI/Panel/HBoxContainer/Heart3")]
-
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
 anchors_preset = 15
@@ -1126,45 +1119,6 @@ position = Vector2(95, 359)
 arrow_scene = ExtResource("6_w6asj")
 
 [node name="Enemies" type="Node" parent="."]
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Panel" type="Panel" parent="UI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -287.0
-offset_top = 28.0
-offset_right = -34.0
-offset_bottom = 100.0
-grow_horizontal = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Heart" type="TextureRect" parent="UI/Panel/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("8_lkjdl")
-expand_mode = 2
-
-[node name="Heart2" type="TextureRect" parent="UI/Panel/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("8_lkjdl")
-expand_mode = 2
-
-[node name="Heart3" type="TextureRect" parent="UI/Panel/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("8_lkjdl")
-expand_mode = 2
 
 [node name="Meat" parent="." instance=ExtResource("10_ff44d")]
 position = Vector2(697, 268)

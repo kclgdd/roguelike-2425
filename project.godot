@@ -19,6 +19,7 @@ config/icon="res://images/UI/icon.svg"
 
 AudioManager="*res://scenes/audio_manager.gd"
 GameManager="*res://scenes/game_manager.gd"
+Hud="*res://scenes/HUD.tscn"
 
 [input]
 

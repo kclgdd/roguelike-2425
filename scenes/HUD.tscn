@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmxwk8jpflfsq"]
+
+[ext_resource type="Script" path="res://scenes/HUD.gd" id="1_oyflp"]
+[ext_resource type="Texture2D" uid="uid://o3y2ore7ahhs" path="res://images/objects/love-always-wins.png" id="2_hvsx3"]
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("hearts", "collectable_label")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_oyflp")
+hearts = [NodePath("Canvas/Panel/HBoxContainer/Heart"), NodePath("Canvas/Panel/HBoxContainer/Heart2"), NodePath("Canvas/Panel/HBoxContainer/Heart3")]
+collectable_label = NodePath("Canvas/CollectibleLabel")
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="Canvas"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -287.0
+offset_top = 28.0
+offset_right = -34.0
+offset_bottom = 100.0
+grow_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Canvas/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Heart" type="TextureRect" parent="Canvas/Panel/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_hvsx3")
+expand_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="Canvas/Panel/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_hvsx3")
+expand_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="Canvas/Panel/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_hvsx3")
+expand_mode = 2
+
+[node name="CollectibleLabel" type="Label" parent="Canvas"]
+offset_left = 18.0
+offset_top = 28.0
+offset_right = 376.0
+offset_bottom = 95.0
+theme_override_font_sizes/font_size = 30
+vertical_alignment = 1

@@ -8,8 +8,6 @@ const JUMP_VELOCITY = -400.0
 
 @onready var sfx_arrows: AudioStreamPlayer = $"../sfx_arrows"
 
-@onready var game_manager: Node = %GameManager
-
 var push_velocity: Vector2 = Vector2.ZERO
 var push_decay: float = 0.9
 
@@ -65,7 +63,7 @@ func shoot_arrow() -> void:
 	get_parent().add_child(arrow_instance)
 
 func take_damage():
-	game_manager.decrease_health()
+	GameManager.decrease_health()
 	
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	self.take_damage()

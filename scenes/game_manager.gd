@@ -1,12 +1,11 @@
 extends Node
 
-@export var hearts : Array[Node]
-@onready var collectable_label: Label = %collectableLabel
-
-
 var max_lives = 3
 var lives = max_lives
 var collectable = 0
+
+signal health_changed
+signal collectible_changed
 
 func _ready() -> void:	
 	pass	
@@ -14,26 +13,19 @@ func _ready() -> void:
 	
 func decrease_health():
 	lives -= 1;
-	update_hearts_display()
+	print(lives)
+	health_changed.emit()
 			
 	if (lives == 0):
 		get_tree().reload_current_scene()
+		restore_full_hp()
 			
 			
 func restore_full_hp():
 	lives = max_lives
-	update_hearts_display()
-		
-		
-func update_hearts_display():
-	for h in range(max_lives):
-		if h < lives:
-			hearts[h].show()
-		else:
-			hearts[h].hide()
+	health_changed.emit()
 		
 			
 func increase_collectable():
 	collectable += 1
-	collectable_label.text = "Apples: " + str(collectable)
-	
+	collectible_changed.emit()
