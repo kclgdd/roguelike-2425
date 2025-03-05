@@ -19,13 +19,31 @@ var tiles = []
 	#2: [1, 3],
 	#3: [2, 3]
 #}
+@export var tile_scenes: Dictionary = {}
+
+func get_tile_name(index: int) -> String:
+	var names = ["blank", "N", "S", "E", "W", "NS", "EW", "NW", "NE", "SW", "SE", "NSE", "NSW", "NEW", "SEW", "NSEW"]
+	return names[index]
+
+func create_empty_scene(path: String):
+	var scene = PackedScene.new()
+	var root = Node.new()
+	scene.pack(root)
+	ResourceSaver.save(scene, path)
+
+func instantiate_tile_scene(tile_id: int) -> Node:
+	if tile_scenes.has(tile_id):
+		return tile_scenes[tile_id].instantiate()
+	else:
+		push_error("ERROR: Tile ID not found!")
+		return null
 
 var tile_types = [0, 1, 2, 3, 4, 5, 6, 7] # Example tile types
 var adjacency_rules = {
-	0: [1, 2, 3, 4, 5, 6, 7],  # Blank tile (0) connects to all tiles except at the ends of paths
+	0: [1, 2, 3, 4, 5, 6, 7],  # Blank tile (0) connects to all tiles
 	1: [1, 3, 4, 5, 6, 7],  # Horizontal Path (left-right) can connect with itself, 4-way, and all corner paths
-	2: [2, 3, 4, 6, 5, 7],  # Vertical Path (top-bottom) can connect with itself, 4-way, and all corner paths
-	3: [1, 2, 3, 4, 5, 6, 7],  # 4-way path connects with all other tiles (horizontal, vertical, corners)
+	2: [2, 3, 4, 5, 6, 7],  # Vertical Path (top-bottom) can connect with itself, 4-way, and all corner paths
+	3: [1, 2, 3, 4, 5, 6, 7],  # 4-way path connects with all other tiles
 	4: [1, 3, 6, 7],  # Top-left corner (up-left) connects with horizontal, 4-way, bottom-left, and bottom-right corners
 	5: [1, 3, 6, 7],  # Top-right corner (up-right) connects with horizontal, 4-way, bottom-left, and bottom-right corners
 	6: [2, 3, 4, 1],  # Bottom-left corner (down-left) connects with vertical, 4-way, top-left, and horizontal paths
@@ -35,6 +53,12 @@ var adjacency_rules = {
  # Define adjacency rules
 
 func _ready():
+	for i in range(16):
+		var scene_path = "res://scenes/tiles/room_%s.tscn" % get_tile_name(i)
+		if not ResourceLoader.exists(scene_path):
+			create_empty_scene(scene_path)
+		tile_scenes[i] = load(scene_path)
+	
 	initialize_grid()
 	collapse_wave_function()
 
