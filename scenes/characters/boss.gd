@@ -23,7 +23,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var y_delta = position.y - body.position.y
 		body.get_pushed_back(x_delta, y_delta)
 		GameManager.decrease_health()
-	elif body.name == "Arrow":  # Check for collision with arrow
+	elif body.name.begins_with("Arrow"):  # Check for collision with arrow
 		hit_count += 1
 		print("hit count: " + str(hit_count))
 		if hit_count >= MAX_HITS:

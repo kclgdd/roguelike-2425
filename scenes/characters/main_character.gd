@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 		sprite_2d.flip_h = false  # Face right
 	
 func shoot_arrow() -> void:
-	var arrow_instance = arrow_scene.instantiate()
+	var arrow_instance = arrow_scene.instantiate() 
 	arrow_instance.position = position + Vector2(-70 if sprite_2d.flip_h else 70, 0) # Set the initial position of the arrow to the character's position
 	
 	get_node("/root/AudioManager").play_arrow_sfx()
@@ -71,6 +71,7 @@ func take_damage():
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	var enemy = area.get_parent()
 	self.take_damage()
+	# push back
 	if enemy and push_velocity == Vector2.ZERO:
 		var x_delta = position.x - enemy.position.x
 		var y_delta = enemy.position.y - position.y

@@ -6,7 +6,6 @@ extends RigidBody2D
 @onready var rigid_body_2d: RigidBody2D = $"."
 @onready var hitbox: Area2D = $Hitbox
 
-
 var hit_count: int = 0  # Counter to track the number of hits
 const MAX_HITS = 10  # Number of hits required to remove the enemy
 const MOVE_SPEED = 100.0  # Speed at which the enemy moves
@@ -27,9 +26,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var y_delta = position.y - body.position.y
 		body.get_pushed_back(x_delta, y_delta)
 		game_manager.decrease_health()
-	elif body.name == "Arrow":  
+	elif body.name.begins_with("Arrow"):
 		hit_count += 1
-		print("hit count: " + str(hit_count))
 		if hit_count >= MAX_HITS:
 			blood_animation()
 			get_node("/root/AudioManager").play_dead_goblin_sfx()

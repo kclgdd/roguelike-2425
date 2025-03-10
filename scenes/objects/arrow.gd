@@ -6,7 +6,7 @@ var speed = 600
 func _ready() -> void:
 	# Apply an initial velocity to the arrow
 	#linear_velocity = Vector2(speed, 0)
-	pass
+	name = "Arrow"
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
