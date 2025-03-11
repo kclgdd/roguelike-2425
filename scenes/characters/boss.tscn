@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://cil3uijfug6qc"]
+[gd_scene load_steps=27 format=3 uid="uid://cil3uijfug6qc"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemy.gd" id="1_ahg07"]
 [ext_resource type="Texture2D" uid="uid://cgtikq5sftybb" path="res://images/characters/Torch_Red.png" id="2_huf00"]
+[ext_resource type="PackedScene" uid="uid://c5tjim6rfqcbh" path="res://scenes/misc/hitbox.tscn" id="3_dppxr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3k8sd"]
 atlas = ExtResource("2_huf00")
@@ -160,6 +161,10 @@ size = Vector2(119, 167)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wol00"]
 size = Vector2(149, 197.5)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_puj4p"]
+radius = 70.0
+height = 212.0
+
 [node name="RigidBody2D" type="RigidBody2D"]
 gravity_scale = 0.0
 script = ExtResource("1_ahg07")
@@ -170,7 +175,8 @@ scale = Vector2(2.58594, 2.74479)
 sprite_frames = SubResource("SpriteFrames_0lnpd")
 animation = &"attacking"
 autoplay = "default"
-frame_progress = 0.444892
+frame = 4
+frame_progress = 0.243193
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, 0.5)
@@ -182,4 +188,15 @@ shape = SubResource("RectangleShape2D_nkvcc")
 position = Vector2(3.5, 1.25)
 shape = SubResource("RectangleShape2D_wol00")
 
+[node name="Hitbox" parent="." instance=ExtResource("3_dppxr")]
+position = Vector2(140, 0)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CapsuleShape2D_puj4p")
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+
+[editable path="Hitbox"]
