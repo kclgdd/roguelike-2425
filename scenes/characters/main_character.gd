@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+var SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
@@ -12,7 +12,6 @@ var push_velocity: Vector2 = Vector2.ZERO
 var push_decay: float = 0.9
 
 func get_pushed_back(x, y):
-	print("being pushed")
 	push_velocity = Vector2(x, y).normalized() * 1000  # Apply push
 	
 	
