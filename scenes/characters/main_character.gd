@@ -5,6 +5,7 @@ const JUMP_VELOCITY = -400.0
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 @export var arrow_scene: PackedScene
+@onready var weapon_cooldown: Timer = $WeaponCooldown # Minimum time before being able to fire another arrow
 
 @onready var sfx_arrows: AudioStreamPlayer = $"../sfx_arrows"
 
@@ -12,7 +13,6 @@ var push_velocity: Vector2 = Vector2.ZERO
 var push_decay: float = 0.9
 
 func get_pushed_back(x, y):
-	print("being pushed")
 	push_velocity = Vector2(x, y).normalized() * 1000  # Apply push
 	
 	
@@ -20,7 +20,8 @@ func _physics_process(delta: float) -> void:
 	# Animations	
 	if Input.is_action_pressed("shoot"):
 		sprite_2d.animation = "shooting"
-		shoot_arrow()
+		if can_shoot_weapon():
+			shoot_arrow()
 	elif (velocity.x > 1 || velocity.x < -1 || velocity.y > 1 || velocity.y < -1):
 		sprite_2d.animation = "moving"
 	else:
@@ -62,6 +63,8 @@ func shoot_arrow() -> void:
 		arrow_instance.get_node("Sprite2D").flip_h = false
 
 	get_parent().add_child(arrow_instance)
+	
+	weapon_cooldown.start()
 
 func take_damage():
 	# only take damage if not being pushed back
@@ -76,3 +79,9 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		var x_delta = position.x - enemy.position.x
 		var y_delta = enemy.position.y - position.y
 		get_pushed_back(x_delta, y_delta)
+		
+
+func can_shoot_weapon():
+	return weapon_cooldown.is_stopped()
+
+	

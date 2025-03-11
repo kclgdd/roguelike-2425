@@ -79,11 +79,9 @@ func should_trigger_hitbox():
 ## Flips hitbox to make sure it matches flipped sprite
 func flip_hitbox():
 	if animated_sprite_2d.flip_h:
-		print("flip")
 		if hitbox.position.x >= 0:
 			hitbox.position.x *= -1
 	else:
-		print("no flip")
 		if hitbox.position.x <= 0:
 			hitbox.position *= -1
 			

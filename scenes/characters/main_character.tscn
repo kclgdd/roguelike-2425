@@ -198,6 +198,10 @@ position = Vector2(-1, 5)
 scale = Vector2(1.8, 1)
 shape = SubResource("CapsuleShape2D_kirqi")
 
+[node name="WeaponCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="Hurtbox"]
