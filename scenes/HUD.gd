@@ -19,7 +19,7 @@ func show_hud():
 	canvas_layer.visible = true
 			
 func update_hearts_display():
-	for h in range(GameManager.max_lives):
+	for h in range(len(hearts)):
 		if h < GameManager.lives:
 			hearts[h].show()
 		else:
