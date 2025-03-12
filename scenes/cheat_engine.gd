@@ -6,7 +6,8 @@ var input_sequence: String = "" # Stores the currently typed sequence
 var cheat_codes = {
 	"NMNM": "speed_up",
 	"NJNJ": "invincibility",
-	"WIWI": "win"
+	"NHNH": "win",
+	"NBNB": "faster_weapon"
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -47,3 +48,11 @@ func invincibility():
 
 func win():
 	GameManager.win()
+	
+func faster_weapon():
+	var player = get_node_or_null("/root/Node/CharacterBody2D")	
+	if player:
+		player.weapon_cooldown.stop()
+		player.weapon_cooldown.wait_time = 0.0001
+		player.weapon_cooldown.start()
+		print(str(player.weapon_cooldown.wait_time))
