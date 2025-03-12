@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6jeufu4rg2wv"]
+
+[ext_resource type="Script" path="res://scenes/victory_screen.gd" id="1_sy58w"]
+[ext_resource type="Texture2D" uid="uid://bjmb8n2hggrlp" path="res://images/UI/Carved_9Slides.png" id="2_c3ydu"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_sy58w")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -79.0
+offset_top = -69.0
+offset_right = 88.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_c3ydu")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = 20.0
+offset_right = 133.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 338.0
+offset_top = 159.0
+offset_right = 807.0
+offset_bottom = 286.0
+theme_override_font_sizes/font_size = 64
+text = "You Win!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

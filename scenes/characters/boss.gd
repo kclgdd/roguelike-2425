@@ -31,6 +31,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			blood_animation()
 			get_node("/root/AudioManager").play_dead_goblin_sfx()
 			queue_free()
+			GameManager.win()
 		
 func move_toward_main_character(delta: float) -> void:
 	if main_character:

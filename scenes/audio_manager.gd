@@ -9,8 +9,6 @@ extends Node
 func _ready() -> void:
 	background_music = AudioStreamPlayer.new()
 	add_child(background_music)
-	background_music.stream = preload("res://sound/music/funny_battle_music.mp3")  
-	background_music.play()
 	
 	arrows_sfx = AudioStreamPlayer.new()
 	add_child(arrows_sfx)
@@ -41,6 +39,14 @@ func play_dead_goblin_sfx():
 		dead_goblin_scream_voice.play()
 	if blood_explosion_sfx.stream:
 		blood_explosion_sfx.play()
+		
+func play_default_bgm():
+	background_music.stream = preload("res://sound/music/funny_battle_music.mp3")  
+	background_music.play()
+
+func play_victory():
+	background_music.stream = preload("res://sound/music/victory_music.wav")  
+	background_music.play()
 		
 func set_volume(volume_db: float):
 	background_music.volume_db = volume_db

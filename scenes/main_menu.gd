@@ -1,6 +1,7 @@
 extends Node
 
 func _ready():
+	AudioManager.play_default_bgm()
 	Hud.hide_hud()
 	
 func _exit_tree():

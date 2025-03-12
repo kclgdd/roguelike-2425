@@ -12,7 +12,6 @@ func _ready() -> void:
 	
 func decrease_health():
 	lives -= 1;
-	print("health: " + str(lives))
 	health_changed.emit()
 			
 	if (lives == 0):
@@ -30,3 +29,8 @@ func invincibility_mode():
 func increase_collectable():
 	collectable += 1
 	collectible_changed.emit()
+	
+func win():
+	get_tree().change_scene_to_file("res://scenes/victory_screen.tscn")
+	AudioManager.play_victory()
+	

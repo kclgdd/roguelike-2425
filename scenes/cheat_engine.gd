@@ -5,7 +5,8 @@ var input_sequence: String = "" # Stores the currently typed sequence
 
 var cheat_codes = {
 	"NMNM": "speed_up",
-	"NJNJ": "invincibility"
+	"NJNJ": "invincibility",
+	"WIWI": "win"
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -43,3 +44,6 @@ func speed_up():
 		
 func invincibility():
 	GameManager.invincibility_mode()
+
+func win():
+	GameManager.win()
