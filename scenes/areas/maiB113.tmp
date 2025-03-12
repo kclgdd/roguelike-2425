@@ -2070,7 +2070,7 @@ texture = ExtResource("5_y3dif")
 [sub_resource type="TileSet" id="TileSet_al2ix"]
 sources/0 = SubResource("TileSetAtlasSource_che6b")
 
-[node name="Node" type="Node"]
+[node name="main" type="Node"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -2122,7 +2122,7 @@ position_smoothing_enabled = true
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("8_acqbr")]
-position = Vector2(936, 326)
+position = Vector2(300, 133)
 
 [node name="Collectables" type="Node" parent="."]
 
