@@ -58,3 +58,12 @@ offset_right = 376.0
 offset_bottom = 95.0
 theme_override_font_sizes/font_size = 30
 vertical_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="Canvas"]
+offset_left = 28.0
+offset_top = 13.0
+offset_right = 176.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 25
+
+[node name="Timer" type="Timer" parent="."]
