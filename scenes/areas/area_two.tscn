@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bp7gloto38wgb"]
+[gd_scene load_steps=12 format=4 uid="uid://bp7gloto38wgb"]
 
 [ext_resource type="Texture2D" uid="uid://c8ghkmenjb8bq" path="res://images/tiles/Brown.png" id="2_jb68o"]
 [ext_resource type="Texture2D" uid="uid://ckmlcej4xqq0h" path="res://images/tiles/Tilemap_Flat.png" id="3_gk72x"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://d34wmm0asn0l2" path="res://scenes/areas/area_three.tscn" id="5_w53ri"]
 [ext_resource type="PackedScene" uid="uid://bgoy4opnt0lp3" path="res://scenes/characters/main_character.tscn" id="6_l4lhx"]
 [ext_resource type="PackedScene" uid="uid://dsrxjilbjiw37" path="res://scenes/objects/arrow.tscn" id="7_1mch5"]
+[ext_resource type="PackedScene" uid="uid://cu2edmjg6c3hb" path="res://scenes/objects/rock.tscn" id="8_3a00f"]
 [ext_resource type="PackedScene" uid="uid://b01kpiacb7263" path="res://scenes/characters/enemy.tscn" id="8_qgp78"]
+[ext_resource type="PackedScene" uid="uid://0in1e05ufj6" path="res://scenes/objects/collectable.tscn" id="9_k1t81"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x3a47"]
 texture = ExtResource("3_gk72x")
@@ -669,6 +671,41 @@ tile_set = SubResource("TileSet_valmd")
 position = Vector2(1120, 324)
 target_level = ExtResource("5_w53ri")
 
+[node name="Obstacles" type="Node" parent="."]
+
+[node name="StaticBody2D" parent="Obstacles" instance=ExtResource("8_3a00f")]
+position = Vector2(281, 357)
+
+[node name="StaticBody2D2" parent="Obstacles" instance=ExtResource("8_3a00f")]
+position = Vector2(282, 296)
+
+[node name="StaticBody2D3" parent="Obstacles" instance=ExtResource("8_3a00f")]
+position = Vector2(284, 233)
+
+[node name="StaticBody2D4" parent="Obstacles" instance=ExtResource("8_3a00f")]
+position = Vector2(277, 425)
+
+[node name="StaticBody2D5" parent="Obstacles" instance=ExtResource("8_3a00f")]
+position = Vector2(971, 252)
+
+[node name="StaticBody2D6" parent="Obstacles" instance=ExtResource("8_3a00f")]
+position = Vector2(967, 313)
+
+[node name="StaticBody2D7" parent="Obstacles" instance=ExtResource("8_3a00f")]
+position = Vector2(965, 383)
+
+[node name="StaticBody2D8" parent="Obstacles" instance=ExtResource("8_3a00f")]
+position = Vector2(969, 452)
+
+[node name="StaticBody2D9" parent="Obstacles" instance=ExtResource("8_3a00f")]
+position = Vector2(969, 196)
+
+[node name="StaticBody2D10" parent="Obstacles" instance=ExtResource("8_3a00f")]
+position = Vector2(967, 132)
+
+[node name="StaticBody2D11" parent="Obstacles" instance=ExtResource("8_3a00f")]
+position = Vector2(973, 515)
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("6_l4lhx")]
 position = Vector2(95, 359)
 arrow_scene = ExtResource("7_1mch5")
@@ -680,3 +717,6 @@ position = Vector2(796, 157)
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("8_qgp78")]
 position = Vector2(573, 518)
+
+[node name="Collectable" parent="." instance=ExtResource("9_k1t81")]
+position = Vector2(369, 316)

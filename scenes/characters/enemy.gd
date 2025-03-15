@@ -10,9 +10,10 @@ var hit_count: int = 0  # Counter to track the number of hits
 const MAX_HITS = 10  # Number of hits required to remove the enemy
 const MOVE_SPEED = 100.0  # Speed at which the enemy moves
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	set_lock_rotation_enabled(true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,14 +37,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func move_toward_main_character(delta: float) -> void:
 	if main_character:
 		var direction = (main_character.position - position).normalized()
-		position += direction * MOVE_SPEED * delta
+		linear_velocity = direction * MOVE_SPEED
 				
 		var distance = main_character.position.distance_to(position)
 		
 		# Flip the enemy's sprite based on the direction it's moving
 		if direction.x < 0:
 			animated_sprite_2d.flip_h = true  # Face left
-
 			attack_animation(distance)
 		elif direction.x > 0:
 			animated_sprite_2d.flip_h = false  # Face right

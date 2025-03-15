@@ -2,8 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://b3ckngy2wlqw4" path="res://images/objects/06.png" id="1_mqkq1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_twtor"]
-radius = 23.2594
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q1uqe"]
+radius = 21.0081
+height = 56.0336
 
 [node name="StaticBody2D" type="StaticBody2D"]
 position = Vector2(2, 1)
@@ -14,5 +15,6 @@ scale = Vector2(1.55084, 1.63529)
 texture = ExtResource("1_mqkq1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, -1)
-shape = SubResource("CircleShape2D_twtor")
+position = Vector2(3, 0)
+rotation = 1.56183
+shape = SubResource("CapsuleShape2D_q1uqe")

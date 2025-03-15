@@ -2483,7 +2483,7 @@ position = Vector2(286, 413)
 position = Vector2(768, 483)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("6_ttbnw")]
-position = Vector2(532, 467)
+position = Vector2(505, 471)
 arrow_scene = ExtResource("7_4lkuw")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
@@ -2493,7 +2493,7 @@ position_smoothing_enabled = true
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("8_acqbr")]
+[node name="RigidBody2D" parent="Enemies" instance=ExtResource("8_acqbr")]
 position = Vector2(860, 474)
 
 [node name="Collectables" type="Node" parent="."]
