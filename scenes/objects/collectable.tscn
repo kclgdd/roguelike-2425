@@ -134,6 +134,7 @@ animations = [{
 radius = 26.0768
 
 [node name="Collectable" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_kwekk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

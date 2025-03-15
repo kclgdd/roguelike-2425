@@ -10,6 +10,7 @@ size = Vector2(62, 8)
 size = Vector2(64, 10)
 
 [node name="Arrow" type="RigidBody2D"]
+collision_layer = 4
 script = ExtResource("1_gny4b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
