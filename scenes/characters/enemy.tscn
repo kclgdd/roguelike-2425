@@ -1,8 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://b01kpiacb7263"]
+[gd_scene load_steps=28 format=3 uid="uid://b01kpiacb7263"]
 
 [ext_resource type="Texture2D" uid="uid://cgtikq5sftybb" path="res://images/characters/Torch_Red.png" id="1_3yyfu"]
 [ext_resource type="Script" path="res://scenes/characters/enemy.gd" id="1_lvfdv"]
 [ext_resource type="PackedScene" uid="uid://c5tjim6rfqcbh" path="res://scenes/misc/hitbox.tscn" id="3_us6yd"]
+[ext_resource type="PackedScene" uid="uid://bvsnbk36sodsr" path="res://scenes/misc/hurtbox.tscn" id="4_0huv0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkvcc"]
+size = Vector2(44, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3k8sd"]
 atlas = ExtResource("1_3yyfu")
@@ -155,37 +159,28 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkvcc"]
-size = Vector2(44, 56)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wol00"]
-size = Vector2(58, 67)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fsoqp"]
 radius = 18.0
 height = 60.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oa5x3"]
+radius = 18.0
+height = 62.0
+
 [node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 7
 gravity_scale = 0.0
 script = ExtResource("1_lvfdv")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -3)
-sprite_frames = SubResource("SpriteFrames_0lnpd")
-animation = &"attacking"
-autoplay = "default"
-frame = 4
-frame_progress = 0.102973
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_nkvcc")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2, 1.5)
-shape = SubResource("RectangleShape2D_wol00")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -3)
+sprite_frames = SubResource("SpriteFrames_0lnpd")
+autoplay = "default"
 
 [node name="Hitbox" parent="." instance=ExtResource("3_us6yd")]
 position = Vector2(47, 2)
@@ -198,7 +193,17 @@ monitoring = false
 scale = Vector2(1.52, 1)
 shape = SubResource("CapsuleShape2D_fsoqp")
 
+[node name="Hurtbox" parent="." instance=ExtResource("4_0huv0")]
+position = Vector2(0, 2)
+scale = Vector2(1.36, 1)
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CapsuleShape2D_oa5x3")
+
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="Hitbox"]
+[editable path="Hurtbox"]

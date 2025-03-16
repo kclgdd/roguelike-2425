@@ -6,9 +6,9 @@ extends RigidBody2D
 @onready var rigid_body_2d: RigidBody2D = $"."
 @onready var hitbox: Area2D = $Hitbox
 
-var hit_count: int = 0  # Counter to track the number of hits
-const MAX_HITS = 10  # Number of hits required to remove the enemy
+const MAX_HEALTH = 10  # Max health of enemy
 const MOVE_SPEED = 100.0  # Speed at which the enemy moves
+var health = MAX_HEALTH		# Current health of enemy, initialised to max health
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,21 +19,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	move_toward_main_character(delta)
+	
 
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if (body.name == "CharacterBody2D"):
-		var x_delta = body.position.x - position.x
-		var y_delta = position.y - body.position.y
-		body.get_pushed_back(x_delta, y_delta)
-		game_manager.decrease_health()
-	elif body.name.begins_with("Arrow"):
-		hit_count += 1
-		if hit_count >= MAX_HITS:
-			blood_animation()
-			get_node("/root/AudioManager").play_dead_goblin_sfx()
-			queue_free()
-		
 func move_toward_main_character(delta: float) -> void:
 	if main_character:
 		var direction = (main_character.position - position).normalized()
@@ -89,3 +76,13 @@ func flip_hitbox():
 	
 func _on_animated_sprite_2d_frame_changed() -> void:
 	self.should_trigger_hitbox()
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	take_damage(1)
+	
+func take_damage(damage):
+	health -= damage
+	if health <= 0:
+		blood_animation()
+		get_node("/root/AudioManager").play_dead_goblin_sfx()
+		queue_free()
