@@ -2469,6 +2469,7 @@ tile_set = SubResource("TileSet_al2ix")
 
 [node name="Exit_Right" parent="." instance=ExtResource("4_1cwsd")]
 position = Vector2(1120, 321)
+collision_mask = 2
 target_level = ExtResource("5_akvnr")
 
 [node name="Obstacles" type="Node" parent="."]
