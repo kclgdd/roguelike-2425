@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	var direction := Vector2(direction_x, direction_y).normalized()
 	#print("x: " + str(direction_x) + " y: " + str(direction_y))
 
-	# if being pushed
+	# If being pushed
 	if push_velocity.length() > 10:
 		velocity = push_velocity
 		push_velocity = lerp(push_velocity, Vector2.ZERO, 1 - pow(push_decay, delta * 60))  # Smooth decay
@@ -67,14 +67,15 @@ func shoot_arrow() -> void:
 	weapon_cooldown.start()
 
 func take_damage():
-	# only take damage if not being pushed back
+	# Only take damage if not being pushed back
 	if push_velocity == Vector2.ZERO:
 		GameManager.decrease_health()
 	
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	var enemy = area.get_parent()
 	self.take_damage()
-	# push back
+	
+	# Push back
 	if enemy and push_velocity == Vector2.ZERO:
 		var x_delta = position.x - enemy.position.x
 		var y_delta = enemy.position.y - position.y
