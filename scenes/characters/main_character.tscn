@@ -166,7 +166,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"shooting",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xrdw"]
@@ -182,8 +182,10 @@ script = ExtResource("1_gv1pi")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jsieu")
-animation = &"moving"
+animation = &"shooting"
 autoplay = "default"
+frame = 3
+frame_progress = 0.790478
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 19.5)
@@ -200,7 +202,7 @@ scale = Vector2(1.8, 1)
 shape = SubResource("CapsuleShape2D_kirqi")
 
 [node name="WeaponCooldown" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.6
 one_shot = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
