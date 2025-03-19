@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dsrxjilbjiw37" path="res://scenes/objects/arrow.tscn" id="7_4lkuw"]
 [ext_resource type="PackedScene" uid="uid://b01kpiacb7263" path="res://scenes/characters/enemy.tscn" id="8_acqbr"]
 [ext_resource type="PackedScene" uid="uid://0in1e05ufj6" path="res://scenes/objects/collectable.tscn" id="10_ei2x0"]
-[ext_resource type="PackedScene" uid="uid://cu2edmjg6c3hb" path="res://scenes/objects/rock.tscn" id="11_wjr2p"]
+[ext_resource type="PackedScene" path="res://scenes/objects/rock.tscn" id="11_wjr2p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3x82m"]
 texture = ExtResource("3_eunt4")
@@ -2429,7 +2429,7 @@ texture = ExtResource("5_y3dif")
 [sub_resource type="TileSet" id="TileSet_al2ix"]
 sources/0 = SubResource("TileSetAtlasSource_che6b")
 
-[node name="Node" type="Node"]
+[node name="Node2" type="Node"]
 
 [node name="Area" type="Node" parent="."]
 
