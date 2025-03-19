@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6jeufu4rg2wv"]
+[gd_scene load_steps=3 format=3 uid="uid://c6ef7wtdmndet"]
 
 [ext_resource type="Script" path="res://scenes/victory_screen.gd" id="1_sy58w"]
 [ext_resource type="Texture2D" uid="uid://bjmb8n2hggrlp" path="res://images/UI/Carved_9Slides.png" id="2_c3ydu"]
 
-[node name="Node" type="Node"]
+[node name="Node2" type="Node"]
 script = ExtResource("1_sy58w")
 
 [node name="TextureRect" type="TextureRect" parent="."]

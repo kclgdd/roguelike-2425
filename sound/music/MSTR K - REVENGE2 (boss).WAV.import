@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://br2rsmuloxote"
+path="res://.godot/imported/MSTR K - REVENGE2 (boss).WAV-8356f2be3d3360322f1a8f0c3ec1d94f.sample"
+
+[deps]
+
+source_file="res://sound/music/MSTR K - REVENGE2 (boss).WAV"
+dest_files=["res://.godot/imported/MSTR K - REVENGE2 (boss).WAV-8356f2be3d3360322f1a8f0c3ec1d94f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

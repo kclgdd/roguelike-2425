@@ -47,3 +47,9 @@ func format_time(seconds: float) -> String:
 	var minutes = int(seconds) / 60
 	var secs = int(seconds) % 60
 	return "%02d:%02d" % [minutes, secs]
+	
+func reset():
+	timer.stop()
+	elapsed_time = 0  # Reset time counter
+	timer_label.text = "00:00"
+	timer.start()

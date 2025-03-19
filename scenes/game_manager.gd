@@ -15,7 +15,8 @@ func decrease_health():
 	health_changed.emit()
 			
 	if (lives == 0):
-		get_tree().reload_current_scene()
+		AudioManager.play_death()
+		get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
 		restore_full_hp()
 			
 func restore_full_hp():
@@ -33,4 +34,12 @@ func increase_collectable():
 func win():
 	get_tree().change_scene_to_file("res://scenes/victory_screen.tscn")
 	AudioManager.play_victory()
+	
+func reset():
+	max_lives = 3
+	lives = max_lives
+	health_changed
+	
+	collectable = 0
+	collectible_changed.emit()
 	

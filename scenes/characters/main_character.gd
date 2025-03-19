@@ -17,22 +17,28 @@ func get_pushed_back(x, y):
 	
 	
 func _physics_process(delta: float) -> void:
-	# Animations	
-	if Input.is_action_pressed("shoot"):
-		sprite_2d.animation = "shooting"
-		if can_shoot_weapon():
-			shoot_arrow()
-	elif (velocity.x > 1 || velocity.x < -1 || velocity.y > 1 || velocity.y < -1):
-		sprite_2d.animation = "moving"
-	else:
-		sprite_2d.animation = "default"
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction_x := Input.get_axis("left", "right")
 	var direction_y := Input.get_axis("up", "down")
 	var direction := Vector2(direction_x, direction_y).normalized()
 	#print("x: " + str(direction_x) + " y: " + str(direction_y))
+	
+	# Animations	
+	if Input.is_action_pressed("shoot_up") or \
+	   Input.is_action_pressed("shoot_down") or \
+	   Input.is_action_pressed("shoot_left") or \
+	   Input.is_action_pressed("shoot_right"):
+		if can_shoot_weapon():
+			shoot_arrow()
+	elif (velocity.x > 1 || velocity.x < -1 || velocity.y > 1 || velocity.y < -1):
+		sprite_2d.animation = "moving"
+		if direction_x < 0:
+			sprite_2d.flip_h = true  # Face left
+		elif direction_x > 0:
+			sprite_2d.flip_h = false  # Face right
+	else:
+		sprite_2d.animation = "default"
 
 	# If being pushed
 	if push_velocity.length() > 10:
@@ -43,28 +49,49 @@ func _physics_process(delta: float) -> void:
 		velocity = direction * SPEED  # Apply normal movement
 	move_and_slide()
 		
-	if direction_x < 0:
-		sprite_2d.flip_h = true  # Face left
-	elif direction_x > 0:
-		sprite_2d.flip_h = false  # Face right
 	
 func shoot_arrow() -> void:
-	var arrow_instance = arrow_scene.instantiate() 
-	arrow_instance.position = position + Vector2(-70 if sprite_2d.flip_h else 70, 0) # Set the initial position of the arrow to the character's position
-	
-	get_node("/root/AudioManager").play_arrow_sfx()
-	
-	# Set the direction and velocity of the arrow
-	if sprite_2d.flip_h:
-		arrow_instance.linear_velocity  = Vector2(-2000, 0)  
-		arrow_instance.get_node("Sprite2D").flip_h = true
-	else:
-		arrow_instance.linear_velocity  = Vector2(2000, 0)  
-		arrow_instance.get_node("Sprite2D").flip_h = false
+	var direction = Vector2.ZERO
+	# Check for arrow key inputs and allow diagonal combinations
+	if Input.is_action_pressed("shoot_up"):
+		direction.y -= 1
+	if Input.is_action_pressed("shoot_down"):
+		direction.y += 1
+	if Input.is_action_pressed("shoot_left"):
+		direction.x -= 1
+	if Input.is_action_pressed("shoot_right"):
+		direction.x += 1
 
+	# If no direction is pressed, don't shoot
+	if direction == Vector2.ZERO:
+		return
+		
+	# Normalize direction so diagonal speed is the same as horizontal/vertical
+	direction = direction.normalized()
+	
+	var arrow_instance = create_arrow(direction)
 	get_parent().add_child(arrow_instance)
 	
 	weapon_cooldown.start()
+	
+	AudioManager.play_arrow_sfx()
+	sprite_2d.animation = "shooting"
+	if direction.x < 0:
+		sprite_2d.flip_h = true  # Face left
+	elif direction.x > 0:
+		sprite_2d.flip_h = false
+
+func create_arrow(direction: Vector2) -> Node2D:
+	var arrow_instance = arrow_scene.instantiate()
+	arrow_instance.position = position + (direction * 70)  # Offset spawn position
+	arrow_instance.linear_velocity = direction * 2000  # Set velocity
+	arrow_instance.rotation = direction.angle()  # Rotate arrow to match direction
+
+	# Flip sprite for left-facing arrows
+	var arrow_sprite = arrow_instance.get_node("Sprite2D")
+	arrow_sprite.flip_h = direction.x < 0  
+
+	return arrow_instance
 
 func take_damage():
 	# Only take damage if not being pushed back
