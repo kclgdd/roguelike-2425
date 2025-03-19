@@ -55,4 +55,3 @@ func faster_weapon():
 		player.weapon_cooldown.stop()
 		player.weapon_cooldown.wait_time = 0.0001
 		player.weapon_cooldown.start()
-		print(str(player.weapon_cooldown.wait_time))

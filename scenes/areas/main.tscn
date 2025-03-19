@@ -2429,7 +2429,7 @@ texture = ExtResource("5_y3dif")
 [sub_resource type="TileSet" id="TileSet_al2ix"]
 sources/0 = SubResource("TileSetAtlasSource_che6b")
 
-[node name="Node2" type="Node"]
+[node name="Node" type="Node"]
 
 [node name="Area" type="Node" parent="."]
 
