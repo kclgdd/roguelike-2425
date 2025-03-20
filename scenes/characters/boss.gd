@@ -4,8 +4,8 @@ extends RigidBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $Hitbox
 
-var hit_count: int = 0  # Counter to track the number of hits
-const MAX_HITS = 50  # Number of hits required to remove the enemy
+const MAX_HEALTH = 3
+var health = MAX_HEALTH
 const MOVE_SPEED = 100.0  # Speed at which the enemy moves
 
 # Called when the node enters the scene tree for the first time.
@@ -24,14 +24,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var y_delta = position.y - body.position.y
 		body.get_pushed_back(x_delta, y_delta)
 		GameManager.decrease_health()
-	elif body.name.begins_with("Arrow"):  # Check for collision with arrow
-		hit_count += 1
-		print("hit count: " + str(hit_count))
-		if hit_count >= MAX_HITS:
-			blood_animation()
-			get_node("/root/AudioManager").play_dead_goblin_sfx()
-			queue_free()
-			GameManager.win()
+
 		
 func move_toward_main_character(delta: float) -> void:
 	if main_character:
@@ -88,6 +81,18 @@ func flip_hitbox():
 			
 func _on_animated_sprite_2d_frame_changed() -> void:
 	self.should_trigger_hitbox()
+	
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	print("area entered")
+	take_damage(1)
+
+func take_damage(damage):
+	health -= damage
+	print("boss health: " + str(health))
+	if health <= 0:
+		blood_animation()
+		queue_free()
+		GameManager.win()
 
 			
 
