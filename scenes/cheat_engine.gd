@@ -7,7 +7,8 @@ var cheat_codes = {
 	"NMNM": "speed_up",
 	"NJNJ": "invincibility",
 	"NHNH": "win",
-	"NBNB": "faster_weapon"
+	"NBNB": "faster_weapon",
+	"IOIO": "go_boss"
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -55,3 +56,7 @@ func faster_weapon():
 		player.weapon_cooldown.stop()
 		player.weapon_cooldown.wait_time = 0.0001
 		player.weapon_cooldown.start()
+		
+func go_boss():
+	print("activated ")
+	get_tree().change_scene_to_file("res://scenes/areas/area_four.tscn")

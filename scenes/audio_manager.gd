@@ -52,6 +52,10 @@ func play_death():
 	background_music.stream = preload("res://sound/music/death_jingle.mp3")
 	background_music.play()
 		
+func play_boss():
+	background_music.stream = preload("res://sound/music/boss_music.WAV")
+	background_music.play()		
+
 func set_volume(volume_db: float):
 	background_music.volume_db = volume_db
 

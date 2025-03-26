@@ -10,8 +10,7 @@ const MOVE_SPEED = 100.0  # Speed at which the enemy moves
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	AudioManager.play_boss() # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

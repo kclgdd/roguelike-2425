@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://br2rsmuloxote"
-path="res://.godot/imported/MSTR K - REVENGE2 (boss).WAV-8356f2be3d3360322f1a8f0c3ec1d94f.sample"
+path="res://.godot/imported/boss_music.WAV-712e3ac3c7db5bcb0826d26e5b215572.sample"
 
 [deps]
 
-source_file="res://sound/music/MSTR K - REVENGE2 (boss).WAV"
-dest_files=["res://.godot/imported/MSTR K - REVENGE2 (boss).WAV-8356f2be3d3360322f1a8f0c3ec1d94f.sample"]
+source_file="res://sound/music/boss_music.WAV"
+dest_files=["res://.godot/imported/boss_music.WAV-712e3ac3c7db5bcb0826d26e5b215572.sample"]
 
 [params]
 

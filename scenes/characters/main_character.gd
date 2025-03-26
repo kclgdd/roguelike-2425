@@ -87,10 +87,6 @@ func create_arrow(direction: Vector2) -> Node2D:
 	arrow_instance.linear_velocity = direction * 2000  # Set velocity
 	arrow_instance.rotation = direction.angle()  # Rotate arrow to match direction
 
-	# Flip sprite for left-facing arrows
-	var arrow_sprite = arrow_instance.get_node("Sprite2D")
-	arrow_sprite.flip_h = direction.x < 0  
-
 	return arrow_instance
 
 func take_damage():

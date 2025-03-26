@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/death_screen.gd" id="1_70y10"]
 [ext_resource type="Texture2D" uid="uid://bjmb8n2hggrlp" path="res://images/UI/Carved_9Slides.png" id="2_6kssf"]
 
-[node name="Node2" type="Node"]
+[node name="Node" type="Node"]
 script = ExtResource("1_70y10")
 
 [node name="TextureRect" type="TextureRect" parent="."]
