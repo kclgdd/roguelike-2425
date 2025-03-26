@@ -42,4 +42,3 @@ func reset():
 	
 	collectable = 0
 	collectible_changed.emit()
-	
