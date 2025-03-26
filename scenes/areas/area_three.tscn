@@ -1123,3 +1123,4 @@ arrow_scene = ExtResource("6_w6asj")
 
 [node name="Meat" parent="." instance=ExtResource("10_ff44d")]
 position = Vector2(697, 268)
+collision_mask = 3
