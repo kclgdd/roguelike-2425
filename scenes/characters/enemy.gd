@@ -82,6 +82,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	
 func take_damage(damage):
 	health -= damage
+	print("Taking dmg. Current hp: " + str(health))
 	if health <= 0:
 		blood_animation()
 		get_node("/root/AudioManager").play_dead_goblin_sfx()

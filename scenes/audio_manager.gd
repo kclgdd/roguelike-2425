@@ -46,6 +46,7 @@ func play_default_bgm():
 
 func play_victory():
 	background_music.stream = preload("res://sound/music/victory_music.wav")  
+	background_music.stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
 	background_music.play()
 		
 func play_death():
@@ -54,6 +55,12 @@ func play_death():
 		
 func play_boss():
 	background_music.stream = preload("res://sound/music/boss_music.WAV")
+	background_music.stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+	background_music.play()		
+	
+func play_rest():
+	background_music.stream = preload("res://sound/music/rest_music.wav")
+	background_music.stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
 	background_music.play()		
 
 func set_volume(volume_db: float):

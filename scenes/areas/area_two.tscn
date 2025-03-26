@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d34wmm0asn0l2" path="res://scenes/areas/area_three.tscn" id="5_w53ri"]
 [ext_resource type="PackedScene" uid="uid://bgoy4opnt0lp3" path="res://scenes/characters/main_character.tscn" id="6_l4lhx"]
 [ext_resource type="PackedScene" uid="uid://dsrxjilbjiw37" path="res://scenes/objects/arrow.tscn" id="7_1mch5"]
-[ext_resource type="PackedScene" uid="uid://cu2edmjg6c3hb" path="res://scenes/objects/rock.tscn" id="8_3a00f"]
+[ext_resource type="PackedScene" path="res://scenes/objects/rock.tscn" id="8_3a00f"]
 [ext_resource type="PackedScene" uid="uid://b01kpiacb7263" path="res://scenes/characters/enemy.tscn" id="8_qgp78"]
 [ext_resource type="PackedScene" uid="uid://0in1e05ufj6" path="res://scenes/objects/collectable.tscn" id="9_k1t81"]
 
@@ -650,7 +650,7 @@ texture = ExtResource("3_gk72x")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_x3a47")
 
-[node name="Node2" type="Node"]
+[node name="Node" type="Node"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
