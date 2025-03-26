@@ -668,7 +668,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAI
 tile_set = SubResource("TileSet_valmd")
 
 [node name="Area2D" parent="." instance=ExtResource("4_vlomr")]
-position = Vector2(1113, 345)
+position = Vector2(1119, 362)
 target_level = ExtResource("5_w53ri")
 
 [node name="Obstacles" type="Node" parent="."]
